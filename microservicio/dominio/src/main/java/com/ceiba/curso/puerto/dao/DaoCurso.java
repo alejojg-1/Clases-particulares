@@ -6,15 +6,15 @@ import java.util.List;
 
 public interface DaoCurso {
     /**
-     * Permite listar usuarios
+     * Permite listar Cursos
      * @return los usuarios
      */
     List<DtoCurso> listar();
 
     /**
-     * Permite buscar usuario
+     * Permite buscar Curso por Id
      * @param id
-     * @return los usuarios
+     * @return Curso
      */
-    DtoCurso buscarPorId(Long id);
+    List<DtoCurso> buscarPorId(Long id);
 }

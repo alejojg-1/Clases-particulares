@@ -36,4 +36,10 @@ public interface RepositorioUsuario {
      */
     boolean existeExcluyendoId(Long id,String nombre);
 
+    /**
+     * Permite buacar por id un usuario
+     * @param id
+     */
+    Usuario buscarPorId(Long id);
+
 }

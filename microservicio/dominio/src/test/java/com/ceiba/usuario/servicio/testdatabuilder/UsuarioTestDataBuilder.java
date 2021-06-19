@@ -2,24 +2,17 @@ package com.ceiba.usuario.servicio.testdatabuilder;
 
 import com.ceiba.usuario.modelo.entidad.Usuario;
 
-import java.time.LocalDateTime;
 
 public class UsuarioTestDataBuilder {
 
     private Long id;
     private String nombreUsuario;
-    private String clave;
-    private LocalDateTime fecha;
+    private int identificacion;
 
     public UsuarioTestDataBuilder() {
+        id = 1L;
         nombreUsuario = "1234";
-        clave = "1234";
-        fecha = LocalDateTime.now();
-    }
-
-    public UsuarioTestDataBuilder conClave(String clave) {
-        this.clave = clave;
-        return this;
+        identificacion = 103841545;
     }
 
     public UsuarioTestDataBuilder conId(Long id) {
@@ -28,6 +21,6 @@ public class UsuarioTestDataBuilder {
     }
 
     public Usuario build() {
-        return new Usuario(id,nombreUsuario, clave,fecha);
+        return new Usuario(id,nombreUsuario,identificacion);
     }
 }

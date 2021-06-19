@@ -2,9 +2,11 @@ package com.ceiba.agenda.modelo.entidad;
 
 import com.ceiba.agenda.excepcion.ExcepcionFechaFinMayor;
 import com.ceiba.curso.modelo.entidad.Curso;
+import com.ceiba.dominio.ValidadorArgumento;
+import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
+import com.ceiba.usuario.modelo.entidad.Usuario;
 import lombok.Getter;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
@@ -12,41 +14,69 @@ import java.time.temporal.ChronoUnit;
 public class Agenda {
 
     private Long id;
-    private String identificacionUsuario;
+    private Usuario usuario;
     private Curso curso;
-    private LocalDateTime FechaIncio;
-    private LocalDateTime FechaFin;
-    private BigDecimal CostoTotal;
+    private LocalDateTime fechaIncio;
+    private LocalDateTime fechaFin;
+    private double cantidadDeHoras;
+    private double costoTotal;
 
+    private static final String SE_DEBE_INGRESAR_FECHA_INICIO = "Se debe ingresar la fecha de inicio";
+    private static final String SE_DEBE_INGRESAR_FECHA_FIN = "Se debe ingresar la fecha de Fin";
+    private static final String SE_DEBE_ASIGANAR_UN_COSTO_TOTAL="Se debe de asignar un costo total";
+    private static final String SE_DEBE_ASIGANAR_UNA_FECHA_FIN_MAYOR="La fecha o horario de fin debe de ser mayor que la fecha de inicio";
+    private static final String SE_DEBE_INGRESAR_UNA_FECHA_DE_INCIO_MENOR_="La fecha inicio no puede susperar un mes desde la fecha actual";
 
     public Agenda(Long id,
-                  String identificacionUsuario,
+                  Usuario usuario,
                   Curso curso,
                   LocalDateTime fechaIncio,
-                  LocalDateTime fechaFin,
-                  BigDecimal costoTotal) {
+                  LocalDateTime fechaFin)
+                   {
+
+        ValidadorArgumento.validarObligatorio(fechaIncio,SE_DEBE_INGRESAR_FECHA_INICIO);
+        ValidadorArgumento.validarObligatorio(fechaFin,SE_DEBE_INGRESAR_FECHA_FIN);
+        validarFechaFinMayor(fechaIncio,fechaFin, SE_DEBE_ASIGANAR_UNA_FECHA_FIN_MAYOR);
         this.id = id;
-        this.identificacionUsuario = identificacionUsuario;
+        this.usuario = usuario;
         this.curso = curso;
-        FechaIncio = fechaIncio;
-        FechaFin = fechaFin;
-        CostoTotal = costoTotal;
+        this.fechaIncio = fechaIncio;
+        this.fechaFin = fechaFin;
+        calcularPeriodoEnHoras(fechaIncio,fechaFin);
+        calcularValorTotal(curso);
+        validarFechaMes(fechaFin,SE_DEBE_INGRESAR_UNA_FECHA_DE_INCIO_MENOR_);
+
     }
 
-    private BigDecimal calcularValorTotal(LocalDateTime fechaIncio, LocalDateTime fechaFin, Curso curso){
-        BigDecimal valorTotal = new BigDecimal(0);
-        int numeroHoras = (int)calcularPeriodoEnHoras(fechaIncio,fechaFin);
-        return null;
+    private void calcularValorTotal(Curso curso){
+       if(cantidadDeHoras>3){
+           costoTotal= aplicarDescuento();
+       }else{
+           costoTotal = curso.getPrecio()*cantidadDeHoras;
+           ValidadorArgumento.validarObligatorio(costoTotal,SE_DEBE_ASIGANAR_UN_COSTO_TOTAL);
+       }
+
     }
 
-    private long calcularPeriodoEnHoras(LocalDateTime fechaIncio, LocalDateTime fechaFin){
-        long numeroHoras = ChronoUnit.HOURS.between(fechaIncio,fechaFin);
-        return numeroHoras;
+    private double aplicarDescuento(){
+        return ((curso.getPrecio()*cantidadDeHoras)-(curso.getPrecio()*cantidadDeHoras*0.1));
     }
 
-    private void ValidarFechaFinMayor(LocalDateTime fechaIncio, LocalDateTime fechaFin, String mensaje){
+    private void  calcularPeriodoEnHoras(LocalDateTime fechaIncio, LocalDateTime fechaFin){
+        cantidadDeHoras = ChronoUnit.HOURS.between(fechaIncio,fechaFin);
+    }
+
+    private void validarFechaFinMayor(LocalDateTime fechaIncio, LocalDateTime fechaFin, String mensaje){
         if(fechaFin.isBefore(fechaIncio)){
             throw new ExcepcionFechaFinMayor(mensaje);
         }
     }
+
+    private void validarFechaMes(LocalDateTime fechaIncio, String mensaje){
+        if(fechaIncio.isBefore(LocalDateTime.now().plusMonths(1))){
+            throw new ExcepcionValorInvalido(mensaje);
+        }
+    }
+
+
 }

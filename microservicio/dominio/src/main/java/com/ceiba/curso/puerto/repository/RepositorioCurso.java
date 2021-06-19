@@ -1,7 +1,10 @@
 package com.ceiba.curso.puerto.repository;
 
+import com.ceiba.curso.modelo.dto.DtoCurso;
 import com.ceiba.curso.modelo.entidad.Curso;
 import com.ceiba.usuario.modelo.entidad.Usuario;
+
+import java.util.List;
 
 public interface RepositorioCurso {
 
@@ -31,6 +34,12 @@ public interface RepositorioCurso {
      * @return si existe o no
      */
     boolean existe(Long id);
+    /**
+     * Permite buscar Curso por Id
+     * @param id
+     * @return Curso
+     */
+    Curso buscarPorId(Long id);
 
 
 }
