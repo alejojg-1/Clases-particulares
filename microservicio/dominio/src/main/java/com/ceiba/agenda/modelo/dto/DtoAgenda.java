@@ -14,8 +14,8 @@ import java.time.LocalDateTime;
 public class DtoAgenda {
 
     private Long id;
-    private Usuario usuario;
-    private Curso curso;
+    private Long idUsuario;
+    private Long idCurso;
     private LocalDateTime fechaIncio;
     private LocalDateTime fechaFin;
     private double CostoTotal;

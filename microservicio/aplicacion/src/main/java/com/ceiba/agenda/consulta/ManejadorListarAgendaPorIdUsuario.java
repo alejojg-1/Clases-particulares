@@ -5,13 +5,15 @@ import com.ceiba.agenda.puerto.dao.DaoAgenda;
 
 import java.util.List;
 
-public class ManejadorListarAgenda {
+public class ManejadorListarAgendaPorIdUsuario {
 
     private final DaoAgenda daoAgenda;
 
-    public ManejadorListarAgenda(DaoAgenda daoAgenda){
+    public ManejadorListarAgendaPorIdUsuario(DaoAgenda daoAgenda) {
         this.daoAgenda = daoAgenda;
     }
 
-    public List<DtoAgenda> ejecutar(){ return this.daoAgenda.listar(); }
+    public List<DtoAgenda> ejecutar(Long idUsuario) {
+        return this.daoAgenda.buscarPorIdUsuario(idUsuario);
+    }
 }

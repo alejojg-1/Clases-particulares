@@ -4,7 +4,6 @@ import com.ceiba.curso.modelo.entidad.Curso;
 import com.ceiba.curso.puerto.repository.RepositorioCurso;
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
-import com.ceiba.usuario.modelo.entidad.Usuario;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
