@@ -26,16 +26,7 @@ public class ServicioCrearAgendaTest {
         BasePrueba.assertThrows(() -> servicioCrearAgenda.ejecutar(agenda), ExcepcionDuplicidad.class,"La agenda ya existe en el sistema");
     }
 
-    @Test
-    public void validarAgendaExistenciaRangoFechaTest() {
-        // arrange
-        Agenda agenda = new AgendaTestDataBuilder().conFechaInicio(LocalDateTime.parse("2021-06-23T05:00:00")).build();
-        RepositorioAgenda repositorioAgenda = Mockito.mock(RepositorioAgenda.class);
-        Mockito.when(repositorioAgenda.existe(Mockito.anyLong())).thenReturn(true);
-        ServicioCrearAgenda servicioCrearAgenda = new ServicioCrearAgenda (repositorioAgenda);
-        // act - assert
-        BasePrueba.assertThrows(() -> servicioCrearAgenda.ejecutar(agenda), ExcepcionDuplicidad.class,"El usuario ya tiene una agenda registrada en esa fecha");
-    }
+
 
     @Test
     public void validarValorTotal(){
