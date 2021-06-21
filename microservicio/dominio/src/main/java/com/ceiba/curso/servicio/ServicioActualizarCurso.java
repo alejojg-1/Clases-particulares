@@ -20,8 +20,7 @@ public class ServicioActualizarCurso {
 
 
     private static final String EL_CURSO_NO_EXISTE_EN_EL_SISTEMA = "El curso no existe en el sistema";
-    private static final String SE_DEBE_INGRESAR_TIPO_DE_CURSO_VALIDO = "Se debe ingresar la fecha de creación";
-    private static final String SE_DEBE_INGRESAR_VALOR_POSITIVO = "Se debe asignar un precio positivo";
+
 
 
     private final RepositorioCurso repositorioCurso;
@@ -32,8 +31,6 @@ public class ServicioActualizarCurso {
 
     public void ejecutar(Curso curso) {
         validarExistenciaPrevia(curso);
-        validarTipoCurso(curso.getTipo());
-        curso = asignarPrecio(curso);
         this.repositorioCurso.actualizar(curso);
     }
 
@@ -44,31 +41,5 @@ public class ServicioActualizarCurso {
         }
     }
 
-    private Curso asignarPrecio(Curso curso){
-        double precio=0;
 
-        if(curso.getTipo().equalsIgnoreCase(TIPO_CURSO_PRIMARIA)){
-            precio = PRECIO_CURSO_PRIMARIA;
-        }else if(curso.getTipo().equalsIgnoreCase(TIPO_CURSO_SECUNDARIA)){
-            precio = PRECIO_CURSO_SECUNDARIA;
-        }else if(curso.getTipo().equalsIgnoreCase(TIPO_CURSO_UNIVERSIDAD)){
-            precio = PRECIO_CURSO_UNIVERSIDAD;
-        }else if(curso.getTipo().equalsIgnoreCase(TIPO_CURSO_OTRO)){
-            precio = PRECIO_CURSO_OTRO;
-        }
-        ValidadorArgumento.validarPositivo(precio, SE_DEBE_INGRESAR_VALOR_POSITIVO);
-        return new Curso(curso.getId(), curso.getNombre(), curso.getTipo(), curso.getDescripcion(), precio);
-    }
-
-    private void validarTipoCurso(String tipo){
-
-        if(!(tipo.equalsIgnoreCase(TIPO_CURSO_PRIMARIA)
-                ||tipo.equalsIgnoreCase(TIPO_CURSO_SECUNDARIA)||
-                tipo.equalsIgnoreCase(TIPO_CURSO_UNIVERSIDAD)||
-                tipo.equalsIgnoreCase(TIPO_CURSO_OTRO)
-        )
-        ){
-            throw new ExcepcionValorInvalido(SE_DEBE_INGRESAR_TIPO_DE_CURSO_VALIDO);
-        }
-    }
 }

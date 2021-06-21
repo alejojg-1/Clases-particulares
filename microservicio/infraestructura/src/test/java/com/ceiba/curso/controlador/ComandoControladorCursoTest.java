@@ -47,7 +47,7 @@ public class ComandoControladorCursoTest {
     @Test
     public void actualizar() throws Exception{
         // arrange
-        Long id = 2L;
+        Long id = 1L;
         ComandoCurso curso = new ComandoCursoTestDataBuilder().build();
 
         // act - assert

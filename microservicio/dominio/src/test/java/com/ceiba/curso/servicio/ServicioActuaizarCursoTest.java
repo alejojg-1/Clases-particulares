@@ -18,10 +18,10 @@ public class ServicioActuaizarCursoTest {
         // arrange
         Curso curso = new CursoTestDataBuilder().conId(1L).build();
         RepositorioCurso repositorioCurso = Mockito.mock(RepositorioCurso.class);
-        Mockito.when(repositorioCurso.existe(Mockito.anyLong())).thenReturn(true);
+        Mockito.when(repositorioCurso.existe(Mockito.anyLong())).thenReturn(false);
         ServicioActualizarCurso servicioActualizarCurso = new ServicioActualizarCurso(repositorioCurso);
         // act - assert
-        BasePrueba.assertThrows(() -> servicioActualizarCurso.ejecutar(curso), ExcepcionDuplicidad.class,"El curso ya existe en el sistema");
+        BasePrueba.assertThrows(() -> servicioActualizarCurso.ejecutar(curso), ExcepcionDuplicidad.class,"El curso no existe en el sistema");
     }
 
 

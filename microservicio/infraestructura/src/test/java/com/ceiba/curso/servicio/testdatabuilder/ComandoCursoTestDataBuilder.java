@@ -16,7 +16,7 @@ public class ComandoCursoTestDataBuilder {
 
 
     public ComandoCursoTestDataBuilder() {
-        nombre = UUID.randomUUID().toString();
+        nombre = "matematicas";
         tipo = "PRIMARIA";
         precio = 10000.0;
         descripcion = "Esto es una prueba";
