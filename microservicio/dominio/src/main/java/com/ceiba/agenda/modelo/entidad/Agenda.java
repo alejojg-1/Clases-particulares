@@ -27,6 +27,10 @@ public class Agenda {
     private static final String SE_DEBE_ASIGANAR_UNA_FECHA_FIN_MAYOR="La fecha o horario de fin debe de ser mayor que la fecha de inicio";
     private static final String SE_DEBE_INGRESAR_UNA_FECHA_DE_INCIO_MENOR_="La fecha inicio no puede susperar un mes desde la fecha actual";
 
+    private static final double PORCENTAJE_DESCUENTO=0.1;
+    private static final int CANTIDAD_DE_HORAS_PARA_DESCUENTO=3;
+
+
     public Agenda(Long id,
                   Usuario usuario,
                   Curso curso,
@@ -49,7 +53,7 @@ public class Agenda {
     }
 
     private void calcularValorTotal(Curso curso){
-       if(cantidadDeHoras>3){
+       if(cantidadDeHoras>CANTIDAD_DE_HORAS_PARA_DESCUENTO){
            costoTotal= aplicarDescuento();
        }else{
            costoTotal = curso.getPrecio()*cantidadDeHoras;
@@ -59,7 +63,7 @@ public class Agenda {
     }
 
     private double aplicarDescuento(){
-        return ((curso.getPrecio()*cantidadDeHoras)-(curso.getPrecio()*cantidadDeHoras*0.1));
+        return ((curso.getPrecio()*cantidadDeHoras)-(curso.getPrecio()*cantidadDeHoras*PORCENTAJE_DESCUENTO));
     }
 
     private void  calcularPeriodoEnHoras(LocalDateTime fechaIncio, LocalDateTime fechaFin){

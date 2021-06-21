@@ -1,7 +1,8 @@
 update agenda
-set usuario_id = :usuario_id,
-	curso_id = :curso_id,
-	fecha_inicio =:fecha_fin,
-	costo_total=:costo_total
+set usuario_id = :idUsuario,
+	curso_id = :idCurso,
+	fecha_inicio =:fechaInicio,
+	fecha_fin =:fechaFin,
+	costo_total=:costoTotal
 where id = :id
 

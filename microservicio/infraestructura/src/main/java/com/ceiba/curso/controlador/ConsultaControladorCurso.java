@@ -26,13 +26,13 @@ public class ConsultaControladorCurso {
     }
 
     @GetMapping
-    @ApiOperation("Listar Usuarios")
+    @ApiOperation("Listar cursos")
     public List<DtoCurso> listar() {
         return this.manejadorListarCurso.ejecutar();
     }
 
     @GetMapping(value="/{id}")
-    @ApiOperation("Listar Usuarios")
+    @ApiOperation("Listar curso por id")
     public List<DtoCurso> listar(@PathVariable Long id) {
         return this.manejadorBuscarCurso.ejecutar(id);
     }

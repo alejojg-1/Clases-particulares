@@ -29,10 +29,4 @@ public class MapeoAgenda implements RowMapper<DtoAgenda>, MapperResult {
         return new DtoAgenda(id,idUsuario,idCurso,fechaInicio,fechaFin,costoTotal);
     }
 
-
-    //Crear un util date
-
-    private LocalDateTime dateToLocalDateTime(Date fecha){
-        return  fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-    }
 }

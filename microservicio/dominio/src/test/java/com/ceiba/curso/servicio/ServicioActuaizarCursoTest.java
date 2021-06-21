@@ -6,7 +6,6 @@ import com.ceiba.curso.puerto.repository.RepositorioCurso;
 import com.ceiba.curso.servicio.testdatabuilder.CursoTestDataBuilder;
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 
-import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import org.junit.Test;
 
 import org.mockito.Mockito;

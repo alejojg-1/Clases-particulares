@@ -1,5 +1,4 @@
-package com.ceiba.curso.controlador;
-
+package com.ceiba.agenda.controlador;
 
 import com.ceiba.ApplicationMock;
 import org.junit.Test;
@@ -19,32 +18,33 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes= ApplicationMock.class)
-@WebMvcTest(ConsultaControladorCurso.class)
-public class ConsultaControladorCursoTest {
-
+@WebMvcTest(ConsultaControladorAgenda.class)
+public class ConsultaControladorAgendaTest {
     @Autowired
     private MockMvc mocMvc;
+
 
     @Test
     public void listar() throws Exception {
         // arrange
 
         // act - assert
-        mocMvc.perform(get("/cursos")
-                .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].nombre", is("matematicas")));
-    }
-    @Test
-    public void listarPorId() throws Exception {
-        // arrange
-        Long id = 1L;
-        // act - assert
-        mocMvc.perform(get("/cursos/{id}",id)
+        mocMvc.perform(get("/agendas")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$[0].id", is(1)));
+    }
+
+    @Test
+    public void listarPorUsuario() throws Exception {
+        // arrange
+        Long id =1L;
+        // act - assert
+        mocMvc.perform(get("/agendas/usuario/{id}",id)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(1)))
+                .andExpect(jsonPath("$[0].idUsuario", is(1)));
     }
 }

@@ -34,32 +34,26 @@ public class ServicioCrearCursoTest {
     @Test
     public void validarCursoConTipoValido(){
         // arrange
-        Curso curso = new CursoTestDataBuilder().conTipo("PRIMARI").build();
+        CursoTestDataBuilder curso = new CursoTestDataBuilder().conTipo("PRIMARI");
 
-        RepositorioCurso repositorioCurso = Mockito.mock(RepositorioCurso.class);
-        ServicioCrearCurso servicioCrearCurso = new ServicioCrearCurso(repositorioCurso);
         // act - assert
-        BasePrueba.assertThrows(() -> servicioCrearCurso.ejecutar(curso), ExcepcionValorInvalido.class,"Se debe ingresar un tipo de curso válido");
+        BasePrueba.assertThrows(() -> curso.build(), ExcepcionValorInvalido.class,"Se debe ingresar un tipo de curso válido");
     }
 
     @Test
     public void validarPrecioCursoPorTipoPrimaria(){
         //arrage
         Curso curso = new CursoTestDataBuilder().conTipo("PRIMARIA").build();
-        RepositorioCurso repositorioCurso = Mockito.mock(RepositorioCurso.class);
-        ServicioCrearCurso servicioCrearCurso = new ServicioCrearCurso(repositorioCurso);
         //act - assert
-        Assertions.assertEquals(servicioCrearCurso.asignarPrecio(curso).getPrecio(),PRECIO_CURSO_PRIMARIA);
+        Assertions.assertEquals((curso).getPrecio(),PRECIO_CURSO_PRIMARIA);
 
     }
     @Test
     public void validarPrecioCursoPorTipoSecundaria(){
         //arrage
         Curso curso = new CursoTestDataBuilder().conTipo("SECUNDARIA").build();
-        RepositorioCurso repositorioCurso = Mockito.mock(RepositorioCurso.class);
-        ServicioCrearCurso servicioCrearCurso = new ServicioCrearCurso(repositorioCurso);
         //act - assert
-        Assertions.assertEquals(servicioCrearCurso.asignarPrecio(curso).getPrecio(),PRECIO_CURSO_SECUNDARIA);
+        Assertions.assertEquals(curso.getPrecio(),PRECIO_CURSO_SECUNDARIA);
 
     }
 
@@ -67,20 +61,16 @@ public class ServicioCrearCursoTest {
     public void validarPrecioCursoPorTipoUniversidad(){
         //arrage
         Curso curso = new CursoTestDataBuilder().conTipo("UNIVERSIDAD").build();
-        RepositorioCurso repositorioCurso = Mockito.mock(RepositorioCurso.class);
-        ServicioCrearCurso servicioCrearCurso = new ServicioCrearCurso(repositorioCurso);
         //act - assert
-        Assertions.assertEquals(servicioCrearCurso.asignarPrecio(curso).getPrecio(),PRECIO_CURSO_UNIVERSIDAD);
+         Assertions.assertEquals(curso.getPrecio(),PRECIO_CURSO_UNIVERSIDAD);
 
     }
     @Test
     public void validarPrecioCursoPorTipoOtro(){
         //arrage
         Curso curso = new CursoTestDataBuilder().conTipo("OTRO").build();
-        RepositorioCurso repositorioCurso = Mockito.mock(RepositorioCurso.class);
-        ServicioCrearCurso servicioCrearCurso = new ServicioCrearCurso(repositorioCurso);
         //act - assert
-        Assertions.assertEquals(servicioCrearCurso.asignarPrecio(curso).getPrecio(),PRECIO_CURSO_OTRO);
+        Assertions.assertEquals(curso.getPrecio(),PRECIO_CURSO_OTRO);
 
     }
 }

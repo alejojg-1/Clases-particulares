@@ -52,8 +52,12 @@ public class RepositorioAgendaMysql implements RepositorioAgenda {
 
     @Override
     public void actualizar(Agenda agenda) {
+        DtoAgenda dtoAgenda = new DtoAgenda(agenda.getId(),
+                agenda.getUsuario().getId(),
+                agenda.getCurso().getId(),agenda.getFechaIncio(),
+                agenda.getFechaFin(),agenda.getCostoTotal());
 
-        this.customNamedParameterJdbcTemplate.actualizar(agenda,sqlActualizar);
+        this.customNamedParameterJdbcTemplate.actualizar(dtoAgenda,sqlActualizar);
     }
 
     @Override
@@ -82,7 +86,7 @@ public class RepositorioAgendaMysql implements RepositorioAgenda {
     public List<DtoAgenda> buscarPorIdUsuario(Long idUsuario) {
 
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("id",idUsuario);
+        paramSource.addValue("usuario_id",idUsuario);
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlBuscarPorIdusuario,paramSource, new MapeoAgenda());
     }
 }

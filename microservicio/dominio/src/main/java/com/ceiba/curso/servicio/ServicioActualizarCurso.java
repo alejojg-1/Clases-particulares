@@ -19,7 +19,7 @@ public class ServicioActualizarCurso {
     private static final double PRECIO_CURSO_OTRO=15000;
 
 
-    private static final String EL_CURSO_YA_EXISTE_EN_EL_SISTEMA = "El curso ya existe en el sistema";
+    private static final String EL_CURSO_NO_EXISTE_EN_EL_SISTEMA = "El curso no existe en el sistema";
     private static final String SE_DEBE_INGRESAR_TIPO_DE_CURSO_VALIDO = "Se debe ingresar la fecha de creación";
     private static final String SE_DEBE_INGRESAR_VALOR_POSITIVO = "Se debe asignar un precio positivo";
 
@@ -39,8 +39,8 @@ public class ServicioActualizarCurso {
 
     private void validarExistenciaPrevia(Curso curso) {
         boolean existe = this.repositorioCurso.existe(curso.getId());
-        if(existe) {
-            throw new ExcepcionDuplicidad(EL_CURSO_YA_EXISTE_EN_EL_SISTEMA);
+        if(!existe) {
+            throw new ExcepcionDuplicidad(EL_CURSO_NO_EXISTE_EN_EL_SISTEMA);
         }
     }
 
