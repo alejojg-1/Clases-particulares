@@ -50,11 +50,11 @@ public class ServicioActualizarCurso {
         if(curso.getTipo().equalsIgnoreCase(TIPO_CURSO_PRIMARIA)){
             precio = PRECIO_CURSO_PRIMARIA;
         }else if(curso.getTipo().equalsIgnoreCase(TIPO_CURSO_SECUNDARIA)){
-            precio = PRECIO_CURSO_PRIMARIA;
+            precio = PRECIO_CURSO_SECUNDARIA;
         }else if(curso.getTipo().equalsIgnoreCase(TIPO_CURSO_UNIVERSIDAD)){
             precio = PRECIO_CURSO_UNIVERSIDAD;
         }else if(curso.getTipo().equalsIgnoreCase(TIPO_CURSO_OTRO)){
-            precio = PRECIO_CURSO_PRIMARIA;
+            precio = PRECIO_CURSO_OTRO;
         }
         ValidadorArgumento.validarPositivo(precio, SE_DEBE_INGRESAR_VALOR_POSITIVO);
         return new Curso(curso.getId(), curso.getNombre(), curso.getTipo(), curso.getDescripcion(), precio);

@@ -1,10 +1,11 @@
 package com.ceiba.agenda.puerto.reposiitory;
 
+import com.ceiba.agenda.modelo.dto.DtoAgenda;
 import com.ceiba.agenda.modelo.entidad.Agenda;
 
 import java.util.List;
 
-public interface RespositorioAgenda {
+public interface RepositorioAgenda {
 
 
     /**
@@ -45,6 +46,6 @@ public interface RespositorioAgenda {
      * @param id
      * @return los Cursos
      */
-    List<Agenda> buscarPorIdUsuario(Long id);
+    List<DtoAgenda> buscarPorIdUsuario(Long id);
 
 }

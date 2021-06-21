@@ -73,7 +73,7 @@ public class Agenda {
     }
 
     private void validarFechaMes(LocalDateTime fechaIncio, String mensaje){
-        if(fechaIncio.isBefore(LocalDateTime.now().plusMonths(1))){
+        if(fechaIncio.isAfter(LocalDateTime.now().plusMonths(1))){
             throw new ExcepcionValorInvalido(mensaje);
         }
     }

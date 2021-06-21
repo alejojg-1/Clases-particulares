@@ -8,14 +8,14 @@ import com.ceiba.agenda.servicio.ServicioCrearAgenda;
 import com.ceiba.manejador.ManejadorComandoRespuesta;
 import org.springframework.stereotype.Component;
 
-// posible erro en dependencias de fabrica
+// posible error en dependencias de fabrica
 @Component
-public class ManejadroCrearAgenda implements ManejadorComandoRespuesta<ComandoAgenda, ComandoRespuesta<Long>> {
+public class ManejadorCrearAgenda implements ManejadorComandoRespuesta<ComandoAgenda, ComandoRespuesta<Long>> {
 
     private final FabricaAgenda fabricaAgenda;
     private final ServicioCrearAgenda servicioCrearAgenda;
 
-    public ManejadroCrearAgenda(FabricaAgenda fabricaAgenda, ServicioCrearAgenda servicioCrearAgenda) {
+    public ManejadorCrearAgenda(FabricaAgenda fabricaAgenda, ServicioCrearAgenda servicioCrearAgenda) {
         this.fabricaAgenda = fabricaAgenda;
         this.servicioCrearAgenda = servicioCrearAgenda;
     }

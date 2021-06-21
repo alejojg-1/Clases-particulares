@@ -29,8 +29,8 @@ public class FabricaAgenda {
                 comandoAgenda.getId(),
                 this.repositorioUsuario.buscarPorId(comandoAgenda.getIdUsuario()),
                 this.repositorioCurso.buscarPorId(comandoAgenda.getIdCurso()),
-                comandoAgenda.getFechaIncio(),
-                comandoAgenda.getFechaIncio()
+                comandoAgenda.getFechaInicio(),
+                comandoAgenda.getFechaFinal()
         );
 
     }

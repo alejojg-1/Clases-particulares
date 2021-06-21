@@ -18,8 +18,8 @@ create table agenda (
  id int(11) not null auto_increment,
  usuario_id int not null,
  curso_id int not null,
- fecha_inicio DATE not null,
- fecha_fin DATE not null,
+ fecha_inicio DATETIME(3) not null,
+ fecha_fin DATETIME(3) not null,
  costo_total double not null,
  primary key (id)
 );

@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.text.Format;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -18,7 +20,7 @@ public class ComandoAgenda {
     private Long id;
     private Long idUsuario;
     private Long idCurso;
-    private LocalDateTime fechaIncio;
-    private LocalDateTime fechaFin;
+    private LocalDateTime fechaInicio= LocalDateTime.now();
+    private LocalDateTime fechaFinal= LocalDateTime.now().plusHours(3);
 
 }

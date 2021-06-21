@@ -21,13 +21,14 @@ public class MapeoAgenda implements RowMapper<DtoAgenda>, MapperResult {
         Long id = resultSet.getLong("id");
         Long idUsuario = resultSet.getLong("usuario_id");
         Long idCurso = resultSet.getLong("curso_id");
-        Date fechaInicio = resultSet.getDate("fecha_inicio");
-        Date fechaFin = resultSet.getDate("fecha_fin");
+        LocalDateTime fechaInicio =  resultSet.getTimestamp("fecha_inicio").toLocalDateTime();
+        LocalDateTime fechaFin = resultSet.getTimestamp("fecha_fin").toLocalDateTime();
         double costoTotal = resultSet.getDouble("costo_total");
 
 
-        return new DtoAgenda(id,idUsuario,idCurso,dateToLocalDateTime(fechaInicio),dateToLocalDateTime(fechaFin),costoTotal);
+        return new DtoAgenda(id,idUsuario,idCurso,fechaInicio,fechaFin,costoTotal);
     }
+
 
     //Crear un util date
 

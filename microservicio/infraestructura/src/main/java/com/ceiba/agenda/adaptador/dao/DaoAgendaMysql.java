@@ -6,9 +6,11 @@ import com.ceiba.curso.adapatador.dao.MapeoCurso;
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class DaoAgendaMysql implements DaoAgenda {
 
     @SqlStatement(namespace="agenda", value="listar")

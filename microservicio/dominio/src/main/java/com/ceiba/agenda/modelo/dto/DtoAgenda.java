@@ -16,8 +16,8 @@ public class DtoAgenda {
     private Long id;
     private Long idUsuario;
     private Long idCurso;
-    private LocalDateTime fechaIncio;
+    private LocalDateTime fechaInicio;
     private LocalDateTime fechaFin;
-    private double CostoTotal;
+    private double costoTotal;
 
 }

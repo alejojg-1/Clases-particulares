@@ -5,11 +5,14 @@ import com.ceiba.usuario.comando.ComandoUsuario;
 import com.ceiba.usuario.comando.manejador.ManejadorActualizarUsuario;
 import com.ceiba.usuario.comando.manejador.ManejadorCrearUsuario;
 import com.ceiba.usuario.comando.manejador.ManejadorEliminarUsuario;
+import com.ceiba.usuario.modelo.dto.DtoUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/usuarios")
@@ -47,4 +50,13 @@ public class ComandoControladorUsuario {
 		comandoUsuario.setId(id);
 		manejadorActualizarUsuario.ejecutar(comandoUsuario);
 	}
+
+
+	@GetMapping("/{id}")
+	@ApiOperation("Listar Usuarios")
+	public List<DtoUsuario> listar(@PathVariable Long id) {
+		return null;
+		//this.manejadorListarUsuarios.;
+	}
+
 }

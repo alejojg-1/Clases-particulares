@@ -57,7 +57,7 @@ public class RespositorioCursoMysql implements RepositorioCurso {
     public Curso buscarPorId(Long id) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlBuscarPorId,paramSource, Curso.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlBuscarPorId,paramSource, new MapeoCursoEntidad());
     }
 
     @Override
