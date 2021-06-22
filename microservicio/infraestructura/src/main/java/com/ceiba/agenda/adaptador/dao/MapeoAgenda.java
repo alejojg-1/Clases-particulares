@@ -1,16 +1,12 @@
 package com.ceiba.agenda.adaptador.dao;
 
 import com.ceiba.agenda.modelo.dto.DtoAgenda;
-import com.ceiba.agenda.puerto.dao.DaoAgenda;
-import com.ceiba.curso.modelo.dto.DtoCurso;
 import com.ceiba.infraestructura.jdbc.MapperResult;
 import org.springframework.jdbc.core.RowMapper;
 
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 
 public class MapeoAgenda implements RowMapper<DtoAgenda>, MapperResult {
 

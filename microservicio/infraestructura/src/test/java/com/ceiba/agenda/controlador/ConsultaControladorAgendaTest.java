@@ -24,7 +24,7 @@ public class ConsultaControladorAgendaTest {
     private MockMvc mocMvc;
 
 
-  /*  @Test
+    @Test
     public void listar() throws Exception {
         // arrange
 
@@ -33,8 +33,8 @@ public class ConsultaControladorAgendaTest {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].id", is(1)));
-    }*/
+                .andExpect(jsonPath("$[0].idUsuario", is(1)));
+    }
 
     @Test
     public void listarPorUsuario() throws Exception {

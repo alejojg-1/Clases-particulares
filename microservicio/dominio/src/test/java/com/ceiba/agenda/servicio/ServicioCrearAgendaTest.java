@@ -2,6 +2,7 @@ package com.ceiba.agenda.servicio;
 
 import com.ceiba.BasePrueba;
 import com.ceiba.agenda.excepcion.ExcepcionFechaFinMayor;
+import com.ceiba.agenda.modelo.dto.DtoAgenda;
 import com.ceiba.agenda.modelo.entidad.Agenda;
 import com.ceiba.agenda.puerto.reposiitory.RepositorioAgenda;
 import com.ceiba.agenda.servicio.testdatabuilder.AgendaTestDataBuilder;
@@ -12,6 +13,8 @@ import org.junit.jupiter.api.Assertions;
 import org.mockito.Mockito;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ServicioCrearAgendaTest {
 
@@ -24,6 +27,19 @@ public class ServicioCrearAgendaTest {
         ServicioCrearAgenda servicioCrearAgenda = new ServicioCrearAgenda (repositorioAgenda);
         // act - assert
         BasePrueba.assertThrows(() -> servicioCrearAgenda.ejecutar(agenda), ExcepcionDuplicidad.class,"La agenda ya existe en el sistema");
+    }
+
+    @Test
+    public void validarAgendaExistenciaPreviaPorFecha() {
+        // arrange
+        Agenda agenda = new AgendaTestDataBuilder().build();
+        List<DtoAgenda> agendas= new ArrayList<>();
+        agendas.add(new DtoAgenda(2L,1L,1L,LocalDateTime.parse("2021-06-23T04:00:00"),LocalDateTime.parse("2021-06-23T10:00:00"),108000.0));
+        RepositorioAgenda repositorioAgenda = Mockito.mock(RepositorioAgenda.class);
+        Mockito.when(repositorioAgenda.buscarPorIdUsuario(Mockito.anyLong())).thenReturn(agendas);
+        ServicioCrearAgenda servicioCrearAgenda = new ServicioCrearAgenda (repositorioAgenda);
+        // act - assert
+        BasePrueba.assertThrows(() -> servicioCrearAgenda.ejecutar(agenda), ExcepcionValorInvalido.class,"El usuario ya tiene una agenda registrada en esa fecha");
     }
 
 

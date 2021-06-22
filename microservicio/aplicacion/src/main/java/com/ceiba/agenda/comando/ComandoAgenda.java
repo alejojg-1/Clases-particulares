@@ -1,7 +1,5 @@
 package com.ceiba.agenda.comando;
 
-import com.ceiba.curso.modelo.entidad.Curso;
-import com.ceiba.usuario.modelo.entidad.Usuario;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

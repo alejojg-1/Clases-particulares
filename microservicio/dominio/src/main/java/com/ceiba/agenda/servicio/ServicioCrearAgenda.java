@@ -5,8 +5,6 @@ import com.ceiba.agenda.modelo.entidad.Agenda;
 import com.ceiba.agenda.puerto.reposiitory.RepositorioAgenda;
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
-import com.ceiba.usuario.modelo.entidad.Usuario;
-import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 
 import java.util.List;
 
