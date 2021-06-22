@@ -1,10 +1,7 @@
 package com.ceiba.curso.puerto.repository;
 
-import com.ceiba.curso.modelo.dto.DtoCurso;
-import com.ceiba.curso.modelo.entidad.Curso;
-import com.ceiba.usuario.modelo.entidad.Usuario;
 
-import java.util.List;
+import com.ceiba.curso.modelo.entidad.Curso;
 
 public interface RepositorioCurso {
 

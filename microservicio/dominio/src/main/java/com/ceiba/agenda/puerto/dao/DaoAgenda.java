@@ -1,7 +1,6 @@
 package com.ceiba.agenda.puerto.dao;
 
 import com.ceiba.agenda.modelo.dto.DtoAgenda;
-import com.ceiba.agenda.modelo.entidad.Agenda;
 
 
 import java.util.List;

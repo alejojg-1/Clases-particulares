@@ -1,7 +1,6 @@
 package com.ceiba.agenda.comando.manejador;
 
 import com.ceiba.agenda.servicio.ServicioEliminarAgenda;
-import com.ceiba.curso.servicio.ServicioEliminarCurso;
 import com.ceiba.manejador.ManejadorComando;
 import org.springframework.stereotype.Component;
 

@@ -10,7 +10,7 @@ public class FabricaUsuario {
 
     public Usuario crear(ComandoUsuario comandoUsuario) {
         return new Usuario(
-                0,
+                comandoUsuario.getId(),
                 comandoUsuario.getNombre(),
                 comandoUsuario.getIdentificacion()
         );

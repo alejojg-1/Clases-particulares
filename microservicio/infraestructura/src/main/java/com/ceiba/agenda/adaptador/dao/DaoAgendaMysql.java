@@ -2,7 +2,6 @@ package com.ceiba.agenda.adaptador.dao;
 
 import com.ceiba.agenda.modelo.dto.DtoAgenda;
 import com.ceiba.agenda.puerto.dao.DaoAgenda;
-import com.ceiba.curso.adapatador.dao.MapeoCurso;
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;

@@ -36,12 +36,32 @@ public class ServicioActualizarAgenda {
     private void validarExistenciaPreviaDeAgendaPorFecha(Agenda agenda) {
         List<DtoAgenda> agendas = this.repositorioAgenda.buscarPorIdUsuario(agenda.getUsuario().getId());
         agendas.forEach( dtoAgenda->{
-            if((agenda.getFechaIncio().isAfter(dtoAgenda.getFechaInicio())
-                    && (agenda.getFechaIncio().isBefore(dtoAgenda.getFechaFin())))
-                    || agenda.getFechaFin().isBefore(dtoAgenda.getFechaFin())
-                    || (agenda.getFechaIncio().isBefore(dtoAgenda.getFechaInicio())&& agenda.getFechaFin().isAfter(agenda.getFechaFin()))){
+            if(validarFechaDentroDelRango(agenda,dtoAgenda)
+                    || validarFechaFueraDelRango(agenda,dtoAgenda)
+                    ||validarParcialDentroDelRango(agenda,dtoAgenda) ){
                 throw new ExcepcionValorInvalido(EL_USUARIO_YA_TIENE_UNA_AGENDA_REGISTRADA_EN_ESA_FECHA);
             }
         });
+    }
+
+    private boolean validarFechaDentroDelRango(Agenda agenda, DtoAgenda dtoAgenda){
+        return (agenda.getFechaIncio().isAfter(dtoAgenda.getFechaInicio())&&agenda.getFechaFin().isBefore(dtoAgenda.getFechaFin()));
+    }
+
+    private boolean validarFechaFueraDelRango(Agenda agenda, DtoAgenda dtoAgenda){
+        return (agenda.getFechaIncio().isBefore(dtoAgenda.getFechaInicio())&&agenda.getFechaFin().isAfter(dtoAgenda.getFechaFin()));
+    }
+
+    private boolean validarParcialDentroDelRango(Agenda agenda, DtoAgenda dtoAgenda){
+        if(agenda.getFechaIncio().isBefore(dtoAgenda.getFechaInicio())&&agenda.getFechaFin().isBefore(dtoAgenda.getFechaFin())){
+            return true;
+        }
+        if(agenda.getFechaIncio().isAfter(dtoAgenda.getFechaInicio())&&agenda.getFechaFin().isAfter(dtoAgenda.getFechaFin())){
+            return true;
+        }
+        else{
+            return false;
+        }
+
     }
 }

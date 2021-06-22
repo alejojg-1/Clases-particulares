@@ -30,11 +30,37 @@ public class ServicioCrearAgendaTest {
     }
 
     @Test
-    public void validarAgendaExistenciaPreviaPorFecha() {
+    public void validarAgendaExistenciaPreviaPorFechaFueraDelRango() {
         // arrange
         Agenda agenda = new AgendaTestDataBuilder().build();
         List<DtoAgenda> agendas= new ArrayList<>();
         agendas.add(new DtoAgenda(2L,1L,1L,LocalDateTime.parse("2021-06-23T04:00:00"),LocalDateTime.parse("2021-06-23T10:00:00"),108000.0));
+        RepositorioAgenda repositorioAgenda = Mockito.mock(RepositorioAgenda.class);
+        Mockito.when(repositorioAgenda.buscarPorIdUsuario(Mockito.anyLong())).thenReturn(agendas);
+        ServicioCrearAgenda servicioCrearAgenda = new ServicioCrearAgenda (repositorioAgenda);
+        // act - assert
+        BasePrueba.assertThrows(() -> servicioCrearAgenda.ejecutar(agenda), ExcepcionValorInvalido.class,"El usuario ya tiene una agenda registrada en esa fecha");
+    }
+
+    @Test
+    public void validarAgendaExistenciaPreviaPorFechaDentroDelRango() {
+        // arrange
+        Agenda agenda = new AgendaTestDataBuilder().build();
+        List<DtoAgenda> agendas= new ArrayList<>();
+        agendas.add(new DtoAgenda(2L,1L,1L,LocalDateTime.parse("2021-06-23T06:00:00"),LocalDateTime.parse("2021-06-23T08:00:00"),40000.0));
+        RepositorioAgenda repositorioAgenda = Mockito.mock(RepositorioAgenda.class);
+        Mockito.when(repositorioAgenda.buscarPorIdUsuario(Mockito.anyLong())).thenReturn(agendas);
+        ServicioCrearAgenda servicioCrearAgenda = new ServicioCrearAgenda (repositorioAgenda);
+        // act - assert
+        BasePrueba.assertThrows(() -> servicioCrearAgenda.ejecutar(agenda), ExcepcionValorInvalido.class,"El usuario ya tiene una agenda registrada en esa fecha");
+    }
+
+    @Test
+    public void validarAgendaExistenciaPreviaPorFechaParcialDentroDelRango() {
+        // arrange
+        Agenda agenda = new AgendaTestDataBuilder().build();
+        List<DtoAgenda> agendas= new ArrayList<>();
+        agendas.add(new DtoAgenda(2L,1L,1L,LocalDateTime.parse("2021-06-23T06:00:00"),LocalDateTime.parse("2021-06-23T11:00:00"),90000.0));
         RepositorioAgenda repositorioAgenda = Mockito.mock(RepositorioAgenda.class);
         Mockito.when(repositorioAgenda.buscarPorIdUsuario(Mockito.anyLong())).thenReturn(agendas);
         ServicioCrearAgenda servicioCrearAgenda = new ServicioCrearAgenda (repositorioAgenda);

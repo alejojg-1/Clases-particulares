@@ -1,6 +1,5 @@
 package com.ceiba.curso.servicio;
 
-import com.ceiba.curso.modelo.entidad.Curso;
 import com.ceiba.curso.puerto.repository.RepositorioCurso;
 
 public class ServicioEliminarCurso {

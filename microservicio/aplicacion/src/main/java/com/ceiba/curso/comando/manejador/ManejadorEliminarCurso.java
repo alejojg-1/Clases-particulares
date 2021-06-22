@@ -2,7 +2,6 @@ package com.ceiba.curso.comando.manejador;
 
 import com.ceiba.curso.servicio.ServicioEliminarCurso;
 import com.ceiba.manejador.ManejadorComando;
-import com.ceiba.usuario.servicio.ServicioEliminarUsuario;
 import org.springframework.stereotype.Component;
 
 @Component
