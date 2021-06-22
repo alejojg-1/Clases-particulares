@@ -54,10 +54,10 @@ public class ServicioCrearAgenda {
     }
 
     private boolean validarParcialDentroDelRango(Agenda agenda, DtoAgenda dtoAgenda){
-        if(agenda.getFechaIncio().isBefore(dtoAgenda.getFechaInicio())&&agenda.getFechaFin().isBefore(dtoAgenda.getFechaFin())){
+        if(agenda.getFechaIncio().isBefore(dtoAgenda.getFechaInicio())&&(agenda.getFechaFin().isBefore(dtoAgenda.getFechaFin())&&agenda.getFechaFin().isAfter(dtoAgenda.getFechaInicio()))){
             return true;
         }
-        if(agenda.getFechaIncio().isAfter(dtoAgenda.getFechaInicio())&&agenda.getFechaFin().isAfter(dtoAgenda.getFechaFin())){
+        if((agenda.getFechaIncio().isAfter(dtoAgenda.getFechaInicio())&&agenda.getFechaIncio().isBefore(dtoAgenda.getFechaFin()))&&agenda.getFechaFin().isAfter(dtoAgenda.getFechaFin())){
             return true;
         }
         else{
