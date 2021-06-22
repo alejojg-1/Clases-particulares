@@ -53,15 +53,16 @@ public class ServicioActualizarAgenda {
     }
 
     private boolean validarParcialDentroDelRango(Agenda agenda, DtoAgenda dtoAgenda){
+        boolean fueraDelrango = false;
         if(agenda.getFechaIncio().isBefore(dtoAgenda.getFechaInicio())&&(agenda.getFechaFin().isBefore(dtoAgenda.getFechaFin())&&agenda.getFechaFin().isAfter(dtoAgenda.getFechaInicio()))){
-            return true;
+            fueraDelrango= true;
         }
-        if((agenda.getFechaIncio().isAfter(dtoAgenda.getFechaInicio())&&agenda.getFechaIncio().isBefore(dtoAgenda.getFechaFin()))&&agenda.getFechaFin().isAfter(dtoAgenda.getFechaFin())){
-            return true;
+        else if((agenda.getFechaIncio().isAfter(dtoAgenda.getFechaInicio())&&agenda.getFechaIncio().isBefore(dtoAgenda.getFechaFin()))&&agenda.getFechaFin().isAfter(dtoAgenda.getFechaFin())){
+            fueraDelrango= true;
         }
         else{
-            return false;
+            fueraDelrango= false;
         }
-
+        return fueraDelrango;
     }
 }
