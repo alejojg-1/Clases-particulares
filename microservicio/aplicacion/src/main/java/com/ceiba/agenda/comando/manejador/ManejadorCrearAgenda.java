@@ -8,7 +8,6 @@ import com.ceiba.agenda.servicio.ServicioCrearAgenda;
 import com.ceiba.manejador.ManejadorComandoRespuesta;
 import org.springframework.stereotype.Component;
 
-// posible error en dependencias de fabrica
 @Component
 public class ManejadorCrearAgenda implements ManejadorComandoRespuesta<ComandoAgenda, ComandoRespuesta<Long>> {
 
