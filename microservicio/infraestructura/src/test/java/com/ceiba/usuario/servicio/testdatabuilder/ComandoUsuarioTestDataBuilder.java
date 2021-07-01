@@ -6,7 +6,7 @@ import java.util.UUID;
 
 public class ComandoUsuarioTestDataBuilder {
 
-    private Long id;
+    private long id;
     private String nombre;
     private int identificacion;
 

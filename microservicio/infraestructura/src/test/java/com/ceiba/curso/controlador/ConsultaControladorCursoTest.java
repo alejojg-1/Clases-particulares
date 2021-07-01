@@ -37,14 +37,13 @@ public class ConsultaControladorCursoTest {
                 .andExpect(jsonPath("$[0].nombre", is("matematicas")));
     }
     @Test
-    public void listarPorId() throws Exception {
+    public void buscarPorId() throws Exception {
         // arrange
         Long id = 1L;
         // act - assert
         mocMvc.perform(get("/cursos/{id}",id)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].id", is(1)));
+                .andExpect(jsonPath("id", is(1)));
     }
 }

@@ -18,6 +18,9 @@ public class DaoAgendaMysql implements DaoAgenda {
     @SqlStatement(namespace="agenda", value="buscarPorIdusuario")
     private static String sqlBuscarPorIdUsuario;
 
+    @SqlStatement(namespace="agenda", value="buscarPorId")
+    private static String sqlBuscarPorId;
+
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
@@ -36,5 +39,12 @@ public class DaoAgendaMysql implements DaoAgenda {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("usuario_id", idUsuario);
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlBuscarPorIdUsuario, paramSource,new MapeoAgenda());
+    }
+
+    @Override
+    public DtoAgenda buscarPorId(Long id) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("id", id);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlBuscarPorId, paramSource,new MapeoAgenda());
     }
 }

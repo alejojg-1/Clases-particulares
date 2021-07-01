@@ -16,5 +16,5 @@ public interface DaoCurso {
      * @param id
      * @return Curso
      */
-    List<DtoCurso> buscarPorId(Long id);
+    DtoCurso buscarPorId(Long id);
 }

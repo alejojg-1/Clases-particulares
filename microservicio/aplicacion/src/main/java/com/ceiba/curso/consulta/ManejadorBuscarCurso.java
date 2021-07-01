@@ -5,7 +5,6 @@ import com.ceiba.curso.puerto.dao.DaoCurso;
 import org.springframework.stereotype.Component;
 
 
-import java.util.List;
 
 @Component
 public class ManejadorBuscarCurso {
@@ -15,5 +14,7 @@ public class ManejadorBuscarCurso {
         this.daoCurso = daoCurso;
     }
 
-    public List<DtoCurso> ejecutar(Long idCurso){ return this.daoCurso.buscarPorId(idCurso); }
+    public DtoCurso ejecutar(Long idCurso){
+        return this.daoCurso.buscarPorId(idCurso); }
+
 }

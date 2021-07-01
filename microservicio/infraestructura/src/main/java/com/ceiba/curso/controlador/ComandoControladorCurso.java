@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/cursos")
 @Api(tags = { "Controlador comando curso"})
+@CrossOrigin(origins = "http://localhost:4400")
 public class ComandoControladorCurso {
 
 

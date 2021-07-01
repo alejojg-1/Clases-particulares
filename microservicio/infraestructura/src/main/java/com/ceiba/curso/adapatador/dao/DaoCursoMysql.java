@@ -32,9 +32,9 @@ public class DaoCursoMysql implements DaoCurso {
     }
 
     @Override
-    public List<DtoCurso> buscarPorId(Long id) {
+    public DtoCurso buscarPorId(Long id) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlBuscarPorId, paramSource,new MapeoCurso());
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlBuscarPorId, paramSource,new MapeoCurso());
     }
 }

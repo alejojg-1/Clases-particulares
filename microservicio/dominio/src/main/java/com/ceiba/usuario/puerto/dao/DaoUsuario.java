@@ -12,5 +12,11 @@ public interface DaoUsuario {
      */
     List<DtoUsuario> listar();
 
+    /**
+     * Permite buscar Curso por Id
+     * @param id
+     * @return Curso
+     */
+    DtoUsuario buscarPorId(Long id);
 
 }

@@ -47,4 +47,15 @@ public class ConsultaControladorAgendaTest {
                 .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$[0].idUsuario", is(1)));
     }
+
+    @Test
+    public void buscarPorId() throws Exception {
+        // arrange
+        Long id = 1L;
+        // act - assert
+        mocMvc.perform(get("/agendas/{id}",id)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("id", is(1)));
+    }
 }

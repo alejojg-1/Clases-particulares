@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/agendas")
 @Api(tags = { "Controlador comando agenda"})
+@CrossOrigin(origins = "http://localhost:4400")
 public class ComandoControladorAgenda {
 
     private final ManejadorCrearAgenda manejadorCrearAgenda;
