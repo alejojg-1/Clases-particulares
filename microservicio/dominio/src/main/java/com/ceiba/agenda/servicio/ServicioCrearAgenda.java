@@ -39,7 +39,8 @@ public class ServicioCrearAgenda {
         agendas.forEach( dtoAgenda->{
             validarFechaDentroDelRango(agenda,dtoAgenda);
             validarFechaFueraDelRango(agenda,dtoAgenda);
-            validarParcialDentroDelRango(agenda,dtoAgenda); });
+            validarParcialDentroDelRango(agenda,dtoAgenda);
+        });
     }
 
     private void validarFechaDentroDelRango(Agenda agenda, DtoAgenda dtoAgenda){
