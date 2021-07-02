@@ -12,9 +12,7 @@ public class FabricaCurso {
                 comandoCurso.getId(),
                 comandoCurso.getNombre(),
                 comandoCurso.getTipo(),
-                comandoCurso.getDescripcion(),
-                comandoCurso.getPrecio()
-        );
+                comandoCurso.getDescripcion());
     }
 
 }

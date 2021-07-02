@@ -16,10 +16,9 @@ public class MapeoCursoEntidad implements RowMapper<Curso>, MapperResult {
         Long id = resultSet.getLong("id");
         String nombre = resultSet.getString("nombre");
         String tipo = resultSet.getString("tipo");
-        Double precio = resultSet.getDouble("precio");
         String descripcion = resultSet.getString("descripcion");
 
 
-        return new Curso(id,nombre,tipo,descripcion,precio);
+        return new Curso(id,nombre,tipo,descripcion);
     }
 }
