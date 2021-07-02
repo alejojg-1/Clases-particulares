@@ -57,11 +57,25 @@ public class ServicioActualizarAgendaTest {
     }
 
     @Test
-    public void validarAgendaExistenciaPreviaPorFechaParcialDentroDelRango() {
+    public void validarAgendaExistenciaPreviaPorFechaParcialDentroDelRangoAntes() {
         // arrange
         Agenda agenda = new AgendaTestDataBuilder().build();
         List<DtoAgenda> agendas= new ArrayList<>();
         agendas.add(new DtoAgenda(2L,1L,1L,LocalDateTime.parse("2021-06-23T06:00:00"),LocalDateTime.parse("2021-06-23T11:00:00"),90000.0));
+        RepositorioAgenda repositorioAgenda = Mockito.mock(RepositorioAgenda.class);
+        Mockito.when(repositorioAgenda.existe(Mockito.anyLong())).thenReturn(true);
+        Mockito.when(repositorioAgenda.buscarPorIdUsuario(Mockito.anyLong())).thenReturn(agendas);
+        ServicioActualizarAgenda servicioActualizarAgenda = new ServicioActualizarAgenda (repositorioAgenda);
+        // act - assert
+        BasePrueba.assertThrows(() -> servicioActualizarAgenda.ejecutar(agenda), ExcepcionValorInvalido.class,"El limite infeior o superior están dentro del rango de la fecha");
+    }
+
+    @Test
+    public void validarAgendaExistenciaPreviaPorFechaParcialDentroDelRangoDespues() {
+        // arrange
+        Agenda agenda = new AgendaTestDataBuilder().build();
+        List<DtoAgenda> agendas= new ArrayList<>();
+        agendas.add(new DtoAgenda(2L,1L,1L,LocalDateTime.parse("2021-06-23T04:00:00"),LocalDateTime.parse("2021-06-23T08:00:00"),90000.0));
         RepositorioAgenda repositorioAgenda = Mockito.mock(RepositorioAgenda.class);
         Mockito.when(repositorioAgenda.existe(Mockito.anyLong())).thenReturn(true);
         Mockito.when(repositorioAgenda.buscarPorIdUsuario(Mockito.anyLong())).thenReturn(agendas);
