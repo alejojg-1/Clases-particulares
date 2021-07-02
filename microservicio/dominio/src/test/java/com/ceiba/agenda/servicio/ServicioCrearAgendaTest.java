@@ -39,7 +39,7 @@ public class ServicioCrearAgendaTest {
         Mockito.when(repositorioAgenda.buscarPorIdUsuario(Mockito.anyLong())).thenReturn(agendas);
         ServicioCrearAgenda servicioCrearAgenda = new ServicioCrearAgenda (repositorioAgenda);
         // act - assert
-        BasePrueba.assertThrows(() -> servicioCrearAgenda.ejecutar(agenda), ExcepcionValorInvalido.class,"El usuario ya tiene una agenda registrada en esa fecha");
+        BasePrueba.assertThrows(() -> servicioCrearAgenda.ejecutar(agenda), ExcepcionValorInvalido.class,"El limite infeior o superior están dentro del rango de la fecha");
     }
 
     @Test
@@ -52,7 +52,7 @@ public class ServicioCrearAgendaTest {
         Mockito.when(repositorioAgenda.buscarPorIdUsuario(Mockito.anyLong())).thenReturn(agendas);
         ServicioCrearAgenda servicioCrearAgenda = new ServicioCrearAgenda (repositorioAgenda);
         // act - assert
-        BasePrueba.assertThrows(() -> servicioCrearAgenda.ejecutar(agenda), ExcepcionValorInvalido.class,"El usuario ya tiene una agenda registrada en esa fecha");
+        BasePrueba.assertThrows(() -> servicioCrearAgenda.ejecutar(agenda), ExcepcionValorInvalido.class,"El limite infeior o superior están dentro del rango de la fecha");
     }
 
     @Test
@@ -65,7 +65,7 @@ public class ServicioCrearAgendaTest {
         Mockito.when(repositorioAgenda.buscarPorIdUsuario(Mockito.anyLong())).thenReturn(agendas);
         ServicioCrearAgenda servicioCrearAgenda = new ServicioCrearAgenda (repositorioAgenda);
         // act - assert
-        BasePrueba.assertThrows(() -> servicioCrearAgenda.ejecutar(agenda), ExcepcionValorInvalido.class,"El usuario ya tiene una agenda registrada en esa fecha");
+        BasePrueba.assertThrows(() -> servicioCrearAgenda.ejecutar(agenda), ExcepcionValorInvalido.class,"El limite infeior o superior están dentro del rango de la fecha");
     }
 
 
