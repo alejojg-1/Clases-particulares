@@ -11,7 +11,6 @@ import java.util.List;
 public class ServicioActualizarAgenda {
 
     private static final String EL_AGENDA_NO_EXISTE_EN_EL_SISTEMA = "La clase no existe en el sistema";
-    private static final String EL_USUARIO_YA_TIENE_UNA_AGENDA_REGISTRADA_EN_ESA_FECHA="El usuario ya tiene una agenda registrada en esa fecha";
     private static final String EL_LIMITE_INFERIOR_O_SUPERIOR_ESTAN_EN_EL_RANGO_DE_FECHA="El limite infeior o superior están dentro del rango de la fecha";
 
     private final RepositorioAgenda repositorioAgenda;
@@ -37,11 +36,9 @@ public class ServicioActualizarAgenda {
     private void validarExistenciaPreviaDeAgendaPorFecha(Agenda agenda) {
         List<DtoAgenda> agendas = this.repositorioAgenda.buscarPorIdUsuario(agenda.getUsuario().getId());
         agendas.forEach( dtoAgenda->{
-            if(validarFechaDentroDelRango(agenda,dtoAgenda)
-                    || validarFechaFueraDelRango(agenda,dtoAgenda)
-                    ||validarParcialDentroDelRango(agenda,dtoAgenda) ){
-                throw new ExcepcionValorInvalido(EL_USUARIO_YA_TIENE_UNA_AGENDA_REGISTRADA_EN_ESA_FECHA);
-            }
+            validarFechaDentroDelRango(agenda,dtoAgenda);
+            validarFechaFueraDelRango(agenda,dtoAgenda);
+            validarParcialDentroDelRango(agenda,dtoAgenda);
         });
     }
 
