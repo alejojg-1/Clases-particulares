@@ -45,6 +45,6 @@ public class CursoTestDataBuilder {
     }
 
     public Curso build() {
-        return new Curso(id,nombre, tipo,descripcion,precio);
+        return new Curso(id,nombre, tipo,descripcion);
     }
 }

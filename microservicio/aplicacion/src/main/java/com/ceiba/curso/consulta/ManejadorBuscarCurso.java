@@ -15,6 +15,7 @@ public class ManejadorBuscarCurso {
     }
 
     public DtoCurso ejecutar(Long idCurso){
-        return this.daoCurso.buscarPorId(idCurso); }
+        return this.daoCurso.buscarPorId(idCurso);
+    }
 
 }

@@ -30,7 +30,7 @@ public class Curso {
     private static final String SE_DEBE_INGRESAR_VALOR_POSITIVO = "Se debe asignar un precio positivo";
 
 
-    public Curso(Long id, String nombre, String tipo, String descripcion,double precio) {
+    public Curso(Long id, String nombre, String tipo, String descripcion) {
         ValidadorArgumento.validarObligatorio(nombre,SE_DEBE_INGRESAR_EL_NOMBRE_DE_CURSO);
         ValidadorArgumento.validarObligatorio(nombre,SE_DEBE_INGRESAR_TIPO_DE_CURSO_VALIDO);
         ValidadorArgumento.validarObligatorio(nombre,SE_DEBE_REGISTRAR_UN_PRECIO_DEL_CURSO);

@@ -22,7 +22,7 @@ public class AgendaTestDataBuilder {
         usuario = new Usuario(1L,"Estefanía",65464654);
         curso = new Curso(1L,"español",
                 "universidad",
-                "curso nivelatorio en lectura",20000.0);
+                "curso nivelatorio en lectura");
         fechaInicio= LocalDateTime.parse("2021-06-23T05:00:00");
         fechaFin= LocalDateTime.parse("2021-06-23T09:00:00");
 
