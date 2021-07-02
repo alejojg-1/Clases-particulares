@@ -55,10 +55,8 @@ public class ServicioCrearAgenda {
     }
 
     private void validarParcialDentroDelRango(Agenda agenda, DtoAgenda dtoAgenda){
-        if(agenda.getFechaIncio().isBefore(dtoAgenda.getFechaInicio())&&(agenda.getFechaFin().isBefore(dtoAgenda.getFechaFin())&&agenda.getFechaFin().isAfter(dtoAgenda.getFechaInicio()))){
-            throw new ExcepcionValorInvalido(EL_LIMITE_INFERIOR_O_SUPERIOR_ESTAN_EN_EL_RANGO_DE_FECHA);
-        }
-        else if((agenda.getFechaIncio().isAfter(dtoAgenda.getFechaInicio())&&agenda.getFechaIncio().isBefore(dtoAgenda.getFechaFin()))&&agenda.getFechaFin().isAfter(dtoAgenda.getFechaFin())){
+        if(agenda.getFechaIncio().isBefore(dtoAgenda.getFechaInicio())&&(agenda.getFechaFin().isBefore(dtoAgenda.getFechaFin())&&agenda.getFechaFin().isAfter(dtoAgenda.getFechaInicio()))
+        ||(agenda.getFechaIncio().isAfter(dtoAgenda.getFechaInicio())&&agenda.getFechaIncio().isBefore(dtoAgenda.getFechaFin()))&&agenda.getFechaFin().isAfter(dtoAgenda.getFechaFin())){
             throw new ExcepcionValorInvalido(EL_LIMITE_INFERIOR_O_SUPERIOR_ESTAN_EN_EL_RANGO_DE_FECHA);
         }
     }
