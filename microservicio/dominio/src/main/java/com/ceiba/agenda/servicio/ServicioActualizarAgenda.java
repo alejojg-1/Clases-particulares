@@ -15,8 +15,7 @@ public class ServicioActualizarAgenda {
 
     private final RepositorioAgenda repositorioAgenda;
 
-    public ServicioActualizarAgenda
-            ( RepositorioAgenda repositorioAgenda) {
+    public ServicioActualizarAgenda ( RepositorioAgenda repositorioAgenda) {
         this.repositorioAgenda = repositorioAgenda;
     }
 
@@ -38,35 +37,27 @@ public class ServicioActualizarAgenda {
         agendas.forEach( dtoAgenda->{
             validarFechaDentroDelRango(agenda,dtoAgenda);
             validarFechaFueraDelRango(agenda,dtoAgenda);
-            validarParcialDentroDelRango(agenda,dtoAgenda);
-        });
+            validarParcialDentroDelRango(agenda,dtoAgenda); });
     }
 
-    private boolean validarFechaDentroDelRango(Agenda agenda, DtoAgenda dtoAgenda){
+    private void validarFechaDentroDelRango(Agenda agenda, DtoAgenda dtoAgenda){
         if( (agenda.getFechaIncio().isAfter(dtoAgenda.getFechaInicio())&&agenda.getFechaFin().isBefore(dtoAgenda.getFechaFin()))){
             throw new ExcepcionValorInvalido(EL_LIMITE_INFERIOR_O_SUPERIOR_ESTAN_EN_EL_RANGO_DE_FECHA);
-        }else{
-            return false;
         }
     }
 
-    private boolean validarFechaFueraDelRango(Agenda agenda, DtoAgenda dtoAgenda){
+    private void validarFechaFueraDelRango(Agenda agenda, DtoAgenda dtoAgenda){
         if((agenda.getFechaIncio().isBefore(dtoAgenda.getFechaInicio())&&agenda.getFechaFin().isAfter(dtoAgenda.getFechaFin()))){
             throw new ExcepcionValorInvalido(EL_LIMITE_INFERIOR_O_SUPERIOR_ESTAN_EN_EL_RANGO_DE_FECHA);
-        }else{
-            return false;
         }
     }
 
-    private boolean validarParcialDentroDelRango(Agenda agenda, DtoAgenda dtoAgenda){
-        boolean fueraDelrango = false;
+    private void validarParcialDentroDelRango(Agenda agenda, DtoAgenda dtoAgenda){
         if(agenda.getFechaIncio().isBefore(dtoAgenda.getFechaInicio())&&(agenda.getFechaFin().isBefore(dtoAgenda.getFechaFin())&&agenda.getFechaFin().isAfter(dtoAgenda.getFechaInicio()))){
             throw new ExcepcionValorInvalido(EL_LIMITE_INFERIOR_O_SUPERIOR_ESTAN_EN_EL_RANGO_DE_FECHA);
-
         }
         else if((agenda.getFechaIncio().isAfter(dtoAgenda.getFechaInicio())&&agenda.getFechaIncio().isBefore(dtoAgenda.getFechaFin()))&&agenda.getFechaFin().isAfter(dtoAgenda.getFechaFin())){
             throw new ExcepcionValorInvalido(EL_LIMITE_INFERIOR_O_SUPERIOR_ESTAN_EN_EL_RANGO_DE_FECHA);
         }
-        return fueraDelrango;
     }
 }
